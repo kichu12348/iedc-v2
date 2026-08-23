@@ -40,9 +40,9 @@ import {
   registerTeam,
 } from "./services/gamingArenaService";
 
-const isMiniMilitiaClosed = false;
-const isEFootballClosed = false;
-const isAllClosed = false;
+const isMiniMilitiaClosed = true;
+const isEFootballClosed = true;
+const isAllClosed = true;
 
 export default function GamingArenaPage() {
   const [selectedGame, setSelectedGame] = useState<GameType>("mini_militia");
@@ -296,8 +296,9 @@ export default function GamingArenaPage() {
                 </div>
                 <h2 className={styles.successTitle}>REGISTRATIONS CLOSED</h2>
                 <p className={styles.successDescription}>
-                  Maximum registration limit reached for both Mini Militia (100)
-                  and eFootball (64). Thank you for your overwhelming response!
+                  Registrations for Gaming Arena are officially closed. Thank
+                  you for your overwhelming response! Stay tuned for tournament
+                  updates and match schedules.
                 </p>
               </div>
             ) : submitStatus === "success" && ticketData ? (

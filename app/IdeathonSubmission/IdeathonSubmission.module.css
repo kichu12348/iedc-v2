@@ -437,24 +437,40 @@
   }
 }
 
-.successScreen {
+.successScreen,
+.closedScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.successIconWrapper {
+.successIconWrapper,
+.closedIconWrapper {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   border: 3.5px solid var(--color-primary);
-  background: var(--color-accent);
   box-shadow: 4px 4px 0 var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+.successIconWrapper {
+  background: var(--color-accent);
+}
+
+.closedIconWrapper {
+  background: #fef2f2;
+}
+
+.closedCross {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ef4444;
+  line-height: 1;
 }
 
 .successCheck {
