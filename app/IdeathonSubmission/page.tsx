@@ -10,7 +10,7 @@ export default function IdeathonSubmissionPage() {
   const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
-    const deadline = new Date("2026-08-25T23:59:59");
+    const deadline = new Date("2026-08-26T23:59:59");
     setIsClosed(new Date() > deadline);
   }, []);
 
@@ -35,7 +35,8 @@ export default function IdeathonSubmissionPage() {
                 </div>
                 <h2 className={styles.successTitle}>SUBMISSIONS CLOSED</h2>
                 <p className={styles.successDescription}>
-                  The submission deadline for the Ideathon pitch deck has passed. We are no longer accepting submissions.
+                  The submission deadline for the Ideathon pitch deck has
+                  passed. We are no longer accepting submissions.
                 </p>
               </div>
             ) : (

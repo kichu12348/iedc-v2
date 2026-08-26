@@ -174,7 +174,9 @@ export default function SubmissionForm() {
 
     const deadline = new Date("2026-08-26T23:59:59");
     if (new Date() > deadline) {
-      return setFormError("Submissions are closed as the deadline (25th August 2026) has passed.");
+      return setFormError(
+        "Submissions are closed as the deadline (26th August 2026) has passed.",
+      );
     }
 
     const currentTeam = verifiedTeam;
