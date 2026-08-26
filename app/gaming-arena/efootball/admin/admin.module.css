@@ -1,0 +1,501 @@
+.adminPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 2rem 1rem 4rem;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Login Gate ===== */
+.loginGate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 1.5rem;
+  width: min(360px, 100%);
+}
+
+.loginTitle {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+}
+
+.loginInput {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 1rem;
+  background: #1a1a1a;
+  border: 2.5px solid #333;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.loginInput:focus {
+  border-color: var(--color-accent);
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 0.85rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-accent);
+  color: #111;
+  border: 2.5px solid var(--color-accent);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all 0.15s ease;
+}
+
+.loginBtn:active {
+  transform: scale(0.97);
+}
+
+.loginError {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.72rem;
+  color: #ff4444;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ===== Admin Container ===== */
+.adminContainer {
+  width: min(600px, 100%);
+  position: relative;
+}
+
+.adminHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #222;
+}
+
+.adminTitle {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.logoutBtn {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: transparent;
+  color: #666;
+  border: 1.5px solid #333;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all 0.15s ease;
+}
+
+.logoutBtn:active {
+  background: #222;
+}
+
+/* ===== Admin Tabs ===== */
+.adminTabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border: 2px solid #333;
+}
+
+.adminTab {
+  flex: 1;
+  padding: 0.7rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  background: #1a1a1a;
+  color: #555;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.15s ease;
+}
+
+.adminTab:not(:last-child) {
+  border-right: 2px solid #333;
+}
+
+.adminTabActive {
+  background: var(--color-accent);
+  color: #111;
+}
+
+/* ===== Group Selector ===== */
+.groupSelector {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border: 2px solid #333;
+}
+
+.groupBtn {
+  flex: 1;
+  padding: 0.6rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  background: #1a1a1a;
+  color: #555;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.groupBtn:not(:last-child) {
+  border-right: 2px solid #333;
+}
+
+.groupBtnActive {
+  background: #333;
+  color: var(--color-accent);
+}
+
+/* ===== Match Card ===== */
+.matchList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.matchCard {
+  background: #1a1a1a;
+  border: 2px solid #2a2a2a;
+  padding: 1rem;
+  transition: border-color 0.15s ease;
+}
+
+.matchCardCompleted {
+  border-color: #333;
+  background: #151515;
+}
+
+.matchCardEditing {
+  border-color: var(--color-accent);
+}
+
+.matchMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.matchNum {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.matchStatus {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  letter-spacing: 0.04em;
+}
+
+.matchStatusFt {
+  background: var(--color-accent);
+  color: #111;
+}
+
+.matchStatusUpcoming {
+  background: #222;
+  color: #555;
+}
+
+.matchPlayers {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.matchPlayerName {
+  flex: 1;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ddd;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.matchPlayerNameHome {
+  text-align: right;
+}
+
+.matchPlayerNameAway {
+  text-align: left;
+}
+
+.matchVs {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.matchScoreDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.matchScoreNum {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  background: var(--color-accent);
+  min-width: 2rem;
+  text-align: center;
+  padding: 0.15rem 0.4rem;
+}
+
+.matchScoreDash {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* ===== Edit Controls ===== */
+.editRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #222;
+}
+
+.scoreInput {
+  width: 3.5rem;
+  padding: 0.5rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  background: #222;
+  border: 2px solid #444;
+  color: #fff;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.scoreInput::-webkit-outer-spin-button,
+.scoreInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.scoreInput:focus {
+  border-color: var(--color-accent);
+}
+
+.editDash {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.editBtnRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  justify-content: center;
+}
+
+.saveBtn {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-accent);
+  color: #111;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all 0.1s ease;
+}
+
+.saveBtn:active {
+  transform: scale(0.95);
+}
+
+.saveBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: transparent;
+  color: #666;
+  border: 1.5px solid #333;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+.cancelBtn:active {
+  background: #222;
+}
+
+.editTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.tapToEdit {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #444;
+  letter-spacing: 0.05em;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.tapToEdit:active {
+  background: #222;
+  color: var(--color-accent);
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  z-index: 1000;
+  animation: toastIn 0.3s ease;
+}
+
+.toastSuccess {
+  background: var(--color-accent);
+  color: #111;
+}
+
+.toastError {
+  background: #ff4444;
+  color: #fff;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ===== Knockout Admin ===== */
+.knockoutRoundAdmin {
+  margin-bottom: 2rem;
+}
+
+.roundTitleAdmin {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #222;
+}
+
+/* ===== Knockout Name Edit ===== */
+.nameInputRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.nameInput {
+  flex: 1;
+  padding: 0.45rem 0.65rem;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #222;
+  border: 1.5px solid #444;
+  color: #ddd;
+  outline: none;
+}
+
+.nameInput:focus {
+  border-color: var(--color-accent);
+}
+
+.nameLabel {
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-width: 2rem;
+}
