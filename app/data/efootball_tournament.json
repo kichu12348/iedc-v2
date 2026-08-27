@@ -1,0 +1,714 @@
+{
+  "tournamentName": "eFootball Championship '26",
+  "groups": {
+    "A": {
+      "teams": [
+        "Ashwin",
+        "Georgi Joji",
+        "Steve Gerrard Roy",
+        "Devadath V",
+        "S Sidharth",
+        "AL ABIN A",
+        "Athul Krishna"
+      ],
+      "matches": [
+        {
+          "home": "Ashwin",
+          "away": "Georgi Joji",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Steve Gerrard Roy",
+          "away": "Devadath V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Georgi Joji",
+          "away": "S Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Ashwin",
+          "away": "Steve Gerrard Roy",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "S Sidharth",
+          "away": "AL ABIN A",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Georgi Joji",
+          "away": "Steve Gerrard Roy",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "S Sidharth",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Devadath V",
+          "away": "AL ABIN A",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Devadath V",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "AL ABIN A",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Ashwin",
+          "away": "S Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Georgi Joji",
+          "away": "Devadath V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Ashwin",
+          "away": "AL ABIN A",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Georgi Joji",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Ashwin",
+          "away": "Devadath V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Georgi Joji",
+          "away": "AL ABIN A",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Ashwin",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Steve Gerrard Roy",
+          "away": "S Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Steve Gerrard Roy",
+          "away": "AL ABIN A",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "S Sidharth",
+          "away": "Devadath V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Steve Gerrard Roy",
+          "away": "Athul Krishna",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    },
+    "B": {
+      "teams": [
+        "Aby S Biju",
+        "Pavisankar P",
+        "Kaustubh D Kamath",
+        "ANUJ K V",
+        "Rohan Fleny",
+        "Nandhu Jain",
+        "Aakhil"
+      ],
+      "matches": [
+        {
+          "home": "Aby S Biju",
+          "away": "Pavisankar P",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Kaustubh D Kamath",
+          "away": "ANUJ K V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aby S Biju",
+          "away": "Rohan Fleny",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Pavisankar P",
+          "away": "Kaustubh D Kamath",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Rohan Fleny",
+          "away": "Nandhu Jain",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aby S Biju",
+          "away": "Kaustubh D Kamath",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Rohan Fleny",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "ANUJ K V",
+          "away": "Nandhu Jain",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "ANUJ K V",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Nandhu Jain",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aby S Biju",
+          "away": "ANUJ K V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Pavisankar P",
+          "away": "Rohan Fleny",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aby S Biju",
+          "away": "Nandhu Jain",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Pavisankar P",
+          "away": "ANUJ K V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aby S Biju",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Pavisankar P",
+          "away": "Nandhu Jain",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Kaustubh D Kamath",
+          "away": "Rohan Fleny",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Pavisankar P",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Kaustubh D Kamath",
+          "away": "Nandhu Jain",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Rohan Fleny",
+          "away": "ANUJ K V",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Kaustubh D Kamath",
+          "away": "Aakhil",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    },
+    "C": {
+      "teams": [
+        "Abhijith",
+        "Vivek T Pramod",
+        "Shaun P Alex",
+        "Adarsh K Varkey",
+        "Philan Koshy",
+        "Advaith PV",
+        "Nabeel"
+      ],
+      "matches": [
+        {
+          "home": "Abhijith",
+          "away": "Vivek T Pramod",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Shaun P Alex",
+          "away": "Adarsh K Varkey",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Abhijith",
+          "away": "Philan Koshy",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Vivek T Pramod",
+          "away": "Advaith PV",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Abhijith",
+          "away": "Shaun P Alex",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Vivek T Pramod",
+          "away": "Philan Koshy",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Shaun P Alex",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Advaith PV",
+          "away": "Adarsh K Varkey",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Advaith PV",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Adarsh K Varkey",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Abhijith",
+          "away": "Advaith PV",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Vivek T Pramod",
+          "away": "Shaun P Alex",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Abhijith",
+          "away": "Adarsh K Varkey",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Vivek T Pramod",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Philan Koshy",
+          "away": "Shaun P Alex",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Abhijith",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Vivek T Pramod",
+          "away": "Adarsh K Varkey",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Philan Koshy",
+          "away": "Advaith PV",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Philan Koshy",
+          "away": "Adarsh K Varkey",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Shaun P Alex",
+          "away": "Advaith PV",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Philan Koshy",
+          "away": "Nabeel",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    },
+    "D": {
+      "teams": [
+        "Niranjan K",
+        "Sinan Yousuf P",
+        "Dhruvan M Adhithyan",
+        "Aaron",
+        "Muhammad Sameeh",
+        "Sidharth",
+        "Govind A S"
+      ],
+      "matches": [
+        {
+          "home": "Niranjan K",
+          "away": "Sinan Yousuf P",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Dhruvan M Adhithyan",
+          "away": "Aaron",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Niranjan K",
+          "away": "Muhammad Sameeh",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Sinan Yousuf P",
+          "away": "Dhruvan M Adhithyan",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Muhammad Sameeh",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Niranjan K",
+          "away": "Dhruvan M Adhithyan",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Sinan Yousuf P",
+          "away": "Govind A S",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Aaron",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Govind A S",
+          "away": "Aaron",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Govind A S",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Niranjan K",
+          "away": "Govind A S",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Sinan Yousuf P",
+          "away": "Muhammad Sameeh",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Niranjan K",
+          "away": "Aaron",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Sinan Yousuf P",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Dhruvan M Adhithyan",
+          "away": "Muhammad Sameeh",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Niranjan K",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Sinan Yousuf P",
+          "away": "Aaron",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Dhruvan M Adhithyan",
+          "away": "Govind A S",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Muhammad Sameeh",
+          "away": "Aaron",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Dhruvan M Adhithyan",
+          "away": "Sidharth",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "home": "Muhammad Sameeh",
+          "away": "Govind A S",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    }
+  },
+  "knockout": {
+    "quarterFinals": [
+      {
+        "id": "QF1",
+        "label": "Quarter-final 1",
+        "home": "Group A #1",
+        "away": "Group B #2",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      },
+      {
+        "id": "QF2",
+        "label": "Quarter-final 2",
+        "home": "Group B #1",
+        "away": "Group A #2",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      },
+      {
+        "id": "QF3",
+        "label": "Quarter-final 3",
+        "home": "Group C #1",
+        "away": "Group D #2",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      },
+      {
+        "id": "QF4",
+        "label": "Quarter-final 4",
+        "home": "Group D #1",
+        "away": "Group C #2",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      }
+    ],
+    "semiFinals": [
+      {
+        "id": "SF1",
+        "label": "Semi-final 1",
+        "home": "Winner QF1",
+        "away": "Winner QF3",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      },
+      {
+        "id": "SF2",
+        "label": "Semi-final 2",
+        "home": "Winner QF2",
+        "away": "Winner QF4",
+        "homeScore": null,
+        "awayScore": null,
+        "status": "upcoming"
+      }
+    ],
+    "final": {
+      "id": "FINAL",
+      "label": "Grand Final (30 Aug)",
+      "home": "Winner SF1",
+      "away": "Winner SF2",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "upcoming"
+    }
+  }
+}
