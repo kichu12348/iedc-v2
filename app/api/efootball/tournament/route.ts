@@ -1,13 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { NextResponse } from "next/server";
 
-const DATA_PATH = path.join(
-  process.cwd(),
-  "app",
-  "data",
-  "efootball_tournament.json",
-);
+const NPOINT_URL = "https://api.npoint.io/d9d956517b1027a084a8";
 
 function corsHeaders() {
   return {
@@ -23,8 +16,8 @@ export async function OPTIONS() {
 
 export async function GET() {
   try {
-    const raw = fs.readFileSync(DATA_PATH, "utf-8");
-    const data = JSON.parse(raw);
+    const res = await fetch(NPOINT_URL, { cache: "no-store" });
+    const data = await res.json();
     return NextResponse.json(data, { headers: corsHeaders() });
   } catch {
     return NextResponse.json(
@@ -34,11 +27,10 @@ export async function GET() {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(request: Request) {
   try {
     const body = await request.json();
 
-    // Validate basic structure
     if (!body.groups || !body.knockout) {
       return NextResponse.json(
         { error: "Invalid payload: 'groups' and 'knockout' are required." },
@@ -46,7 +38,15 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    fs.writeFileSync(DATA_PATH, JSON.stringify(body, null, 2), "utf-8");
+    const res = await fetch(NPOINT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      throw new Error(`npoint responded with ${res.status}`);
+    }
 
     return NextResponse.json(
       { success: true, message: "Tournament data updated." },
