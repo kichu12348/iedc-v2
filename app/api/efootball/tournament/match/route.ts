@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 
-const DATA_PATH = path.join(
-  process.cwd(),
-  "app",
-  "data",
-  "efootball_tournament.json",
-);
+const NPOINT_URL = "https://api.npoint.io/d9d956517b1027a084a8";
 
 function corsHeaders() {
   return {
@@ -51,8 +44,13 @@ export async function OPTIONS() {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const raw = fs.readFileSync(DATA_PATH, "utf-8");
-    const data = JSON.parse(raw);
+
+    // Fetch current data from npoint
+    const fetchRes = await fetch(NPOINT_URL, { cache: "no-store" });
+    if (!fetchRes.ok) {
+      throw new Error("Failed to fetch current tournament data.");
+    }
+    const data = await fetchRes.json();
 
     if (body.stage === "group") {
       const { group, matchIndex, homeScore, awayScore, status } = body;
@@ -138,7 +136,16 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf-8");
+    // Save updated data back to npoint
+    const saveRes = await fetch(NPOINT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!saveRes.ok) {
+      throw new Error("Failed to save tournament data.");
+    }
 
     return NextResponse.json(
       { success: true, message: "Match score updated." },
