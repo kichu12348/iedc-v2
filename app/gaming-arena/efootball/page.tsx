@@ -145,6 +145,76 @@ export default function EFootballTournamentPage() {
     return result;
   }, [groups]);
 
+  // ── Auto-resolve knockout placeholder names ──
+  const resolveName = useCallback(
+    (name: string): string => {
+      if (!knockout) return name;
+
+      // Resolve "Group X #1" / "Group X #2" from standings
+      const groupMatch = name.match(/^Group\s+([A-D])\s+#(\d)$/i);
+      if (groupMatch) {
+        const grp = groupMatch[1].toUpperCase();
+        const pos = parseInt(groupMatch[2]) - 1; // 0-indexed
+        const standings = groupStandings[grp];
+        if (standings && standings[pos] && standings[pos].mp > 0) {
+          return standings[pos].team;
+        }
+        return name;
+      }
+
+      // Resolve "Winner QFx" / "Winner SFx" from knockout results
+      const winnerMatch = name.match(/^Winner\s+(QF\d|SF\d)$/i);
+      if (winnerMatch) {
+        const matchId = winnerMatch[1].toUpperCase();
+        let sourceMatch: KnockoutMatch | undefined;
+
+        if (matchId.startsWith("QF")) {
+          sourceMatch = knockout.quarterFinals.find((m) => m.id === matchId);
+        } else if (matchId.startsWith("SF")) {
+          sourceMatch = knockout.semiFinals.find((m) => m.id === matchId);
+        }
+
+        if (
+          sourceMatch &&
+          sourceMatch.status === "ft" &&
+          sourceMatch.homeScore !== null &&
+          sourceMatch.awayScore !== null
+        ) {
+          const homeResolved = resolveName(sourceMatch.home);
+          const awayResolved = resolveName(sourceMatch.away);
+          return sourceMatch.homeScore > sourceMatch.awayScore
+            ? homeResolved
+            : awayResolved;
+        }
+        return name;
+      }
+
+      // Resolve "Loser SFx" for 3rd place
+      const loserMatch = name.match(/^Loser\s+(SF\d)$/i);
+      if (loserMatch) {
+        const matchId = loserMatch[1].toUpperCase();
+        const sourceMatch = knockout.semiFinals.find((m) => m.id === matchId);
+
+        if (
+          sourceMatch &&
+          sourceMatch.status === "ft" &&
+          sourceMatch.homeScore !== null &&
+          sourceMatch.awayScore !== null
+        ) {
+          const homeResolved = resolveName(sourceMatch.home);
+          const awayResolved = resolveName(sourceMatch.away);
+          return sourceMatch.homeScore < sourceMatch.awayScore
+            ? homeResolved
+            : awayResolved;
+        }
+        return name;
+      }
+
+      return name;
+    },
+    [groupStandings, knockout],
+  );
+
   // Determine match winner/loser highlighting
   const getMatchHighlight = (m: Match) => {
     if (m.homeScore === null || m.awayScore === null)
@@ -168,6 +238,19 @@ export default function EFootballTournamentPage() {
       isPlayed && (match.homeScore ?? 0) > (match.awayScore ?? 0);
     const awayWins =
       isPlayed && (match.awayScore ?? 0) > (match.homeScore ?? 0);
+
+    const homeName = resolveName(match.home);
+    const awayName = resolveName(match.away);
+    const homeIsPlaceholder = homeName !== match.home ? false : (
+      match.home.includes("Winner") ||
+      match.home.includes("Loser") ||
+      match.home.includes("Group")
+    );
+    const awayIsPlaceholder = awayName !== match.away ? false : (
+      match.away.includes("Winner") ||
+      match.away.includes("Loser") ||
+      match.away.includes("Group")
+    );
 
     return (
       <div
@@ -200,15 +283,12 @@ export default function EFootballTournamentPage() {
         >
           <span
             className={`${styles.knockoutTeam} ${
-              !isPlayed &&
-              (match.home.includes("Winner") ||
-                match.home.includes("Loser") ||
-                match.home.includes("Group"))
+              !isPlayed && homeIsPlaceholder
                 ? styles.knockoutTeamPlaceholder
                 : ""
             }`}
           >
-            {match.home}
+            {homeName}
           </span>
           <span
             className={`${styles.knockoutScore} ${!isPlayed ? styles.knockoutScorePending : ""}`}
@@ -221,15 +301,12 @@ export default function EFootballTournamentPage() {
         >
           <span
             className={`${styles.knockoutTeam} ${
-              !isPlayed &&
-              (match.away.includes("Winner") ||
-                match.away.includes("Loser") ||
-                match.away.includes("Group"))
+              !isPlayed && awayIsPlaceholder
                 ? styles.knockoutTeamPlaceholder
                 : ""
             }`}
           >
-            {match.away}
+            {awayName}
           </span>
           <span
             className={`${styles.knockoutScore} ${!isPlayed ? styles.knockoutScorePending : ""}`}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "./admin.module.css";
 
 // ── Types ──
@@ -17,6 +17,18 @@ interface KnockoutMatch extends Match {
   label: string;
 }
 
+interface TeamStanding {
+  team: string;
+  mp: number;
+  w: number;
+  d: number;
+  l: number;
+  gf: number;
+  ga: number;
+  gd: number;
+  pts: number;
+}
+
 interface TournamentData {
   tournamentName: string;
   groups: Record<string, { teams: string[]; matches: Match[] }>;
@@ -26,6 +38,59 @@ interface TournamentData {
     thirdPlace?: KnockoutMatch;
     final: KnockoutMatch;
   };
+}
+
+function calculateStandings(
+  teams: string[],
+  matches: Match[],
+): TeamStanding[] {
+  const map: Record<string, TeamStanding> = {};
+
+  for (const t of teams) {
+    map[t] = { team: t, mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+  }
+
+  for (const m of matches) {
+    if (m.homeScore === null || m.awayScore === null || m.status === "upcoming")
+      continue;
+
+    const home = map[m.home];
+    const away = map[m.away];
+    if (!home || !away) continue;
+
+    home.mp++;
+    away.mp++;
+    home.gf += m.homeScore;
+    home.ga += m.awayScore;
+    away.gf += m.awayScore;
+    away.ga += m.homeScore;
+
+    if (m.homeScore > m.awayScore) {
+      home.w++;
+      home.pts += 3;
+      away.l++;
+    } else if (m.homeScore < m.awayScore) {
+      away.w++;
+      away.pts += 3;
+      home.l++;
+    } else {
+      home.d++;
+      away.d++;
+      home.pts += 1;
+      away.pts += 1;
+    }
+  }
+
+  for (const t of Object.values(map)) {
+    t.gd = t.gf - t.ga;
+  }
+
+  return Object.values(map).sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts;
+    if (b.gd !== a.gd) return b.gd - a.gd;
+    if (b.gf !== a.gf) return b.gf - a.gf;
+    return a.team.localeCompare(b.team);
+  });
 }
 
 const ADMIN_PASS = "iedc2026";
@@ -75,6 +140,88 @@ export default function EFootballAdminPage() {
   useEffect(() => {
     if (isAuthed) fetchData();
   }, [isAuthed, fetchData]);
+
+  const groups = tournament?.groups ?? {};
+  const knockout = tournament?.knockout;
+
+  // Compute standings for all groups
+  const groupStandings = useMemo(() => {
+    const result: Record<string, TeamStanding[]> = {};
+    for (const [groupName, groupData] of Object.entries(groups)) {
+      result[groupName] = calculateStandings(
+        groupData.teams,
+        groupData.matches,
+      );
+    }
+    return result;
+  }, [groups]);
+
+  // Auto-resolve knockout placeholder names
+  const resolveName = useCallback(
+    (name: string): string => {
+      if (!knockout) return name;
+
+      const groupMatch = name.match(/^Group\s+([A-D])\s+#(\d)$/i);
+      if (groupMatch) {
+        const grp = groupMatch[1].toUpperCase();
+        const pos = parseInt(groupMatch[2]) - 1;
+        const standings = groupStandings[grp];
+        if (standings && standings[pos] && standings[pos].mp > 0) {
+          return standings[pos].team;
+        }
+        return name;
+      }
+
+      const winnerMatch = name.match(/^Winner\s+(QF\d|SF\d)$/i);
+      if (winnerMatch) {
+        const matchId = winnerMatch[1].toUpperCase();
+        let sourceMatch: KnockoutMatch | undefined;
+
+        if (matchId.startsWith("QF")) {
+          sourceMatch = knockout.quarterFinals.find((m) => m.id === matchId);
+        } else if (matchId.startsWith("SF")) {
+          sourceMatch = knockout.semiFinals.find((m) => m.id === matchId);
+        }
+
+        if (
+          sourceMatch &&
+          sourceMatch.status === "ft" &&
+          sourceMatch.homeScore !== null &&
+          sourceMatch.awayScore !== null
+        ) {
+          const homeResolved = resolveName(sourceMatch.home);
+          const awayResolved = resolveName(sourceMatch.away);
+          return sourceMatch.homeScore > sourceMatch.awayScore
+            ? homeResolved
+            : awayResolved;
+        }
+        return name;
+      }
+
+      const loserMatch = name.match(/^Loser\s+(SF\d)$/i);
+      if (loserMatch) {
+        const matchId = loserMatch[1].toUpperCase();
+        const sourceMatch = knockout.semiFinals.find((m) => m.id === matchId);
+
+        if (
+          sourceMatch &&
+          sourceMatch.status === "ft" &&
+          sourceMatch.homeScore !== null &&
+          sourceMatch.awayScore !== null
+        ) {
+          const homeResolved = resolveName(sourceMatch.home);
+          const awayResolved = resolveName(sourceMatch.away);
+          return sourceMatch.homeScore < sourceMatch.awayScore
+            ? homeResolved
+            : awayResolved;
+        }
+        return name;
+      }
+
+      return name;
+    },
+    [groupStandings, knockout],
+  );
 
   // ── Toast ──
   const showToast = (msg: string, type: "success" | "error") => {
@@ -211,8 +358,8 @@ export default function EFootballAdminPage() {
     setEditingMatch(key);
     setEditHome(m.homeScore !== null ? String(m.homeScore) : "");
     setEditAway(m.awayScore !== null ? String(m.awayScore) : "");
-    setEditHomeName(m.home);
-    setEditAwayName(m.away);
+    setEditHomeName(resolveName(m.home));
+    setEditAwayName(resolveName(m.away));
   };
 
   // ── Login screen ──
@@ -369,6 +516,9 @@ export default function EFootballAdminPage() {
     const isCompleted = m.status === "ft";
     const isSingleMatch = round === "thirdPlace" || round === "final";
 
+    const homeName = resolveName(m.home);
+    const awayName = resolveName(m.away);
+
     return (
       <div
         key={key}
@@ -387,7 +537,7 @@ export default function EFootballAdminPage() {
           <span
             className={`${styles.matchPlayerName} ${styles.matchPlayerNameHome}`}
           >
-            {m.home}
+            {homeName}
           </span>
           {isCompleted && !isEditing ? (
             <div className={styles.matchScoreDisplay}>
@@ -401,7 +551,7 @@ export default function EFootballAdminPage() {
           <span
             className={`${styles.matchPlayerName} ${styles.matchPlayerNameAway}`}
           >
-            {m.away}
+            {awayName}
           </span>
         </div>
 
