@@ -1,0 +1,349 @@
+.brandsPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 8.5rem 2rem 6rem;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(232, 160, 32, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(circle at right 30%, rgba(0, 0, 0, 0.04), transparent 35%),
+    linear-gradient(180deg, #f8f4eb 0%, #f2ede2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandsPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 26, 26, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.titleAccent {
+  color: var(--color-accent);
+}
+
+.subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: var(--text-subtle);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.inputSection {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.teamInput {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: var(--color-primary);
+  background: var(--color-white);
+  border: 2px solid rgba(26, 26, 26, 0.12);
+  border-radius: 12px;
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.teamInput::placeholder {
+  color: rgba(26, 26, 26, 0.35);
+}
+
+.teamInput:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(232, 160, 32, 0.15);
+}
+
+.revealBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-primary);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.revealBtn:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+}
+
+.revealBtn:active {
+  transform: translateY(0);
+}
+
+.revealBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cardsGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 720px;
+}
+
+.cardContainer {
+  perspective: 800px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- Front Face (Hidden Brand) ---- */
+.cardFront {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2a2a2a 100%);
+  color: var(--color-white);
+  gap: 0.75rem;
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.18);
+}
+
+.cardFrontLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+}
+
+.cardNumber {
+  font-family: "Inter", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  opacity: 0.15;
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+}
+
+/* ---- Back Face (Brand Revealed) ---- */
+.cardBack {
+  background: var(--color-white);
+  transform: rotateY(180deg);
+  border: 2px solid rgba(232, 160, 32, 0.25);
+  box-shadow: 0 8px 32px rgba(232, 160, 32, 0.12);
+  gap: 1rem;
+  text-align: center;
+}
+
+.brandName {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.brandDivider {
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.brandDescription {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.teamBadge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(232, 160, 32, 0.1);
+  border: 1px solid rgba(232, 160, 32, 0.25);
+  border-radius: 999px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  animation: fadeInDown 0.5s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardEnter {
+  animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cardEnterDelay {
+  animation-delay: 0.15s;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.resetBtn {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-subtle);
+  background: transparent;
+  border: 1.5px solid rgba(26, 26, 26, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.resetBtn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(26, 26, 26, 0.03);
+}
+
+@media screen and (max-width: 768px) {
+  .brandsPage {
+    padding: 7rem 1rem 4rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 360px;
+  }
+
+  .card {
+    min-height: 220px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .brandsPage {
+    padding: 6rem 0.75rem 3rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    min-height: 200px;
+  }
+
+  .brandName {
+    font-size: 1.25rem;
+  }
+}
